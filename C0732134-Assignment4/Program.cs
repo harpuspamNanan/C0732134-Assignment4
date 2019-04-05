@@ -17,6 +17,8 @@ namespace C0732134_Assignment4
 
             Program p = new Program();
             p.Beowulf = new ArrayList();
+            p.ReadTextFiles();
+            Console.ReadLine();
         }
 
         public void Run()
@@ -37,9 +39,10 @@ namespace C0732134_Assignment4
                 {
                     Console.WriteLine(ln);
                     Beowulf.Add(ln);
+                    counter++;
                 }
                 file.Close();
-                Console.WriteLine($"File has {counter} lines.");
+                Console.WriteLine($"\n\n\t\t\tFile has {counter} lines.");                                // Section A
             }
         }
 
