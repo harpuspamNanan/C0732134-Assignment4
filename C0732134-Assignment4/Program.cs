@@ -32,37 +32,48 @@ namespace C0732134_Assignment4
             // Read file using StreamReader. Read file line by line
             using (StreamReader file = new StreamReader("U:/Users/732134/Peter/5 April, 2019/C0732134-Assignment4/Beowulf.txt"))
             {
-                int counter = 0;
+                int counter = 0, words=0;
                 string ln;
 
                 while ((ln = file.ReadLine()) != null)
                 {
                     Console.WriteLine(ln);
-                    Beowulf.Add(ln);
-                    counter++;
+                    Beowulf.Add(ln);                    
+                    counter++;                   
                 }
                 file.Close();
+                //FindNumberOfBlankSpaces(Beowulf);
                 Console.WriteLine($"\n\n\t\t\tFile has {counter} lines.");                                // Section A
+
+                Console.WriteLine($"\t\t\tFile has {ToCountWords()} words");
+
             }
-        }
+        }        
 
-
-        public int FindNumberOfBlankSpaces(string line)
+        public long ToCountWords()                                                                      // Section B
         {
-            // https://stackoverflow.com/questions/17812566/count-words-and-spaces-in-s
+            long countWords = 0;
+            int place = 0;
+            String takeLine;
+            StreamReader takeInputFromTextFile = new StreamReader("U:/Users/732134/Peter/5 April, 2019/C0732134-Assignment4/Beowulf.txt");
+            takeLine = takeInputFromTextFile.ReadToEnd();
 
-            int countLetters = 0;
-            int countSpaces = 0;
+            string word = takeLine.Trim();
 
-            foreach (char c in line)
+            while (place < word.Length)
             {
-                if (char.IsLetter(c))
-                    countLetters++;
-                if (char.IsWhiteSpace(c))
-                    countSpaces++;
+                while (place < word.Length && !char.IsWhiteSpace(word[place]))
+                    place++;
+
+                countWords++;
+
+                while (place < word.Length && char.IsWhiteSpace(word[place]))
+                        place++;
             }
-            return countSpaces;
+
+            return countWords;
         }
-        
+
+
     }
 }
