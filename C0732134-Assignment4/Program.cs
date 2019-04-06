@@ -80,10 +80,19 @@ namespace C0732134_Assignment4
             foreach (var item in File.ReadAllLines("U:/Users/732134/Peter/5 April, 2019/C0732134-Assignment4/Beowulf.txt"))
             {
                 temp++;
-                if (item.Contains("sea") && item.Contains("fare"))
-                    Console.WriteLine($"Sea and Fare Occured at (temp) Line");
+                if (item.Contains("sea") && item.Contains("fare"))                                              // Section C
+                    Console.WriteLine($"Sea and Fare Occured at {temp} Line");
+
+                else if (item.Contains("fare") && (!item.Contains("war")) )                                    // Section D
+                    Console.WriteLine($" \t\t\t\t\t\tFare without the word War came at {temp} Line");
             }
            
+        }
+
+
+        public void FindFareWithourWar()
+        {
+
         }
 
     }
