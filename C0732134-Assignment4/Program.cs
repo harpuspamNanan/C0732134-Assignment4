@@ -45,12 +45,12 @@ namespace C0732134_Assignment4
                 //FindNumberOfBlankSpaces(Beowulf);
                 Console.WriteLine($"\n\n\t\t\tFile has {counter} lines.");                                // Section A
 
-                Console.WriteLine($"\t\t\tFile has {ToCountWords()} words");
+                ToCountWords();                                         // Section B
+                FindBothOfTheWords();                                   // Section C
 
             }
-        }        
-
-        public long ToCountWords()                                                                      // Section B
+        }
+        public long ToCountWords()                                                              // Section B               
         {
             long countWords = 0;
             int place = 0;
@@ -68,12 +68,23 @@ namespace C0732134_Assignment4
                 countWords++;
 
                 while (place < word.Length && char.IsWhiteSpace(word[place]))
-                        place++;
+                    place++;
             }
 
             return countWords;
         }
 
+        public void FindBothOfTheWords ()                                                                           // Section C
+        {
+            int temp=0;
+            foreach (var item in File.ReadAllLines("U:/Users/732134/Peter/5 April, 2019/C0732134-Assignment4/Beowulf.txt"))
+            {
+                temp++;
+                if (item.Contains("sea") && item.Contains("fare"))
+                    Console.WriteLine($"Sea and Fare Occured at (temp) Line");
+            }
+           
+        }
 
     }
 }
