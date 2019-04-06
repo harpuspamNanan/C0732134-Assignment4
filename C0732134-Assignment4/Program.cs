@@ -43,10 +43,11 @@ namespace C0732134_Assignment4
                 }
                 file.Close();
                 //FindNumberOfBlankSpaces(Beowulf);
-                Console.WriteLine($"\n\n\t\t\tFile has {counter} lines.");                                // Section A
+                Console.WriteLine($"\n\n\t\t\tFile has {counter} lines.\n");                                // Section A
 
-                ToCountWords();                                         // Section B
-                FindBothOfTheWords();                                   // Section C
+                Console.WriteLine($"\t\t\tFile has {ToCountWords()} words.\n");                                          // Section B
+                FindBothOfTheWords();                                   // Section C  &  D
+                FindAvgLetterOfaWord();                                 // Section E
 
             }
         }
@@ -90,10 +91,18 @@ namespace C0732134_Assignment4
         }
 
 
-        public void FindFareWithourWar()
+        public void FindAvgLetterOfaWord()                                                                  // Section E
         {
-
+            long totalWords = ToCountWords();
+            double avg = 0.0;
+            float sum = 0;
+            foreach (var item in File.ReadAllLines("U:/Users/732134/Peter/5 April, 2019/C0732134-Assignment4/Beowulf.txt"))
+            {
+                sum += item.Length;
+            }
+            avg = sum / (float)totalWords;
+            avg = Math.Round(avg, 3);
+            Console.WriteLine($"\n\n\nThe Average Letters per Word is {avg}");
         }
-
     }
 }
